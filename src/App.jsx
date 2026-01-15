@@ -10,7 +10,7 @@ import Login from "./page/Login";
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
 
-  // ✅ check login on page load
+  // check login on page load
   useEffect(() => {
     const loginStatus = localStorage.getItem("isLogin") === "true";
     setIsLogin(loginStatus);
@@ -23,7 +23,9 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />
+
+      {/* Navbar sirf tab show hoga jab login ho */}
+      {isLogin && <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />}
 
       <Routes>
         {/* Login */}
@@ -38,19 +40,12 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/eventdata"
           element={
             <ProtectedRoute>
               <EventData />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
             </ProtectedRoute>
           }
         />

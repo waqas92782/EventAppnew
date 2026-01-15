@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../App.css";
-import { useContext } from "react";
 import { DataContext } from "../Context/Data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Form = () => {
   const [formData, setFormData] = useState({
     guestName: "",
@@ -14,7 +16,6 @@ const Form = () => {
 
   const { addRecord } = useContext(DataContext);
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -22,6 +23,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     addRecord(formData);
 
     setFormData({
@@ -31,12 +33,16 @@ const Form = () => {
       children: "",
       slipNumber: "",
       dateTime: "",
-    })
+    });
+
+    toast.success("Your item is saved!");
   };
 
   return (
     <div className="form-wrapper">
-      <form className="event-form" onSubmit={handleSubmit}>
+      <ToastContainer position="top-right" autoClose={2000} />
+
+      <form className="event-form" onSubmit={handleSubmit}  autoComplete="off">
         <h2>Event Guest Record</h2>
 
         <input
@@ -46,6 +52,7 @@ const Form = () => {
           value={formData.guestName}
           onChange={handleChange}
           required
+           autoComplete="off"
         />
 
         <input
@@ -55,6 +62,7 @@ const Form = () => {
           value={formData.guestNumber}
           onChange={handleChange}
           required
+           autoComplete="off"
         />
 
         <div className="row">
@@ -65,6 +73,7 @@ const Form = () => {
             value={formData.adults}
             onChange={handleChange}
             required
+             autoComplete="off"
           />
 
           <input
@@ -73,6 +82,8 @@ const Form = () => {
             placeholder="Children"
             value={formData.children}
             onChange={handleChange}
+            autoComplete="off"
+            required
           />
         </div>
 
@@ -83,6 +94,7 @@ const Form = () => {
           value={formData.slipNumber}
           onChange={handleChange}
           required
+          autoComplete="off"
         />
 
         <input
@@ -91,6 +103,7 @@ const Form = () => {
           value={formData.dateTime}
           onChange={handleChange}
           required
+          autoComplete="off"
         />
 
         <button type="submit">Save Record</button>

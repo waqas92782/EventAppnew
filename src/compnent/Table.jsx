@@ -1,13 +1,22 @@
 import { useContext } from "react";
 import { DataContext } from "../Context/Data";
 import "../App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Table = () => {
   const { dataRecord, deleteRecord } = useContext(DataContext);
 
+  const handleDelete = (id) => {
+    deleteRecord(id);
+    toast.error("Record Deleted Successfully!");
+  };
+
   return (
     <div className="table-wrapper">
       <h2>Guest Records</h2>
+
+      <ToastContainer position="top-right" autoClose={2000} />
 
       <div className="table-scroll">
         <table className="record-table">
@@ -33,7 +42,10 @@ const Table = () => {
                 <td>{item.slipNumber}</td>
                 <td>{item.dateTime}</td>
                 <td>
-                  <button className="delete-btn" onClick={() => deleteRecord(item.id)}>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(item.id)}
+                  >
                     Delete
                   </button>
                 </td>
