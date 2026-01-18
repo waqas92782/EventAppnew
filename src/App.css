@@ -127,7 +127,7 @@
   }
 }
 
-/* ================= FORM ================= */
+/* ================= FORM WRAPPER ================= */
 .form-wrapper {
   height: 100vh;
   display: flex;
@@ -137,307 +137,106 @@
   padding: 20px;
 }
 
+/* ================= FORM CARD ================= */
 .event-form {
   width: 100%;
-  max-width: 420px;
-  background: #111;
-  padding: 30px;
-  border-radius: 15px;
+  max-width: 450px;
+  background: #1a1a1a;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
 }
 
 .event-form h2 {
   text-align: center;
   color: #00ffd5;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 26px;
+  letter-spacing: 1px;
 }
 
-.event-form input {
+/* ================= INPUTS ================= */
+.event-form input,
+.datepicker-input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
+  padding: 14px 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
   border: none;
   background: #222;
   color: #fff;
   font-size: 16px;
-}
-
-.row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.event-form button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 25px;
-  border: none;
-  background: #00ffd5;
-  font-weight: 600;
-  cursor: pointer;
   transition: 0.3s;
 }
-.event-form button:hover {
-  background: #00e6c2;
+
+.event-form input:focus,
+.datepicker-input:focus {
+  outline: none;
+  background: #333;
+  box-shadow: 0 0 8px #00ffd5;
 }
 
-/* Mobile form inputs stack */
-@media (max-width: 600px) {
-  .row {
-    flex-direction: column;
-  }
+.event-form input::placeholder,
+.datepicker-input::placeholder {
+  color: #aaa;
+  font-weight: 500;
 }
 
-/* ================= TABLE ================= */
-.table-wrapper {
-  min-height: calc(100vh - 70px);
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  padding: 30px;
-}
-
-.table-wrapper h2 {
-  text-align: center;
-  color: #00ffd5;
+/* ================= ROW FOR MULTIPLE INPUTS ================= */
+.row {
+  display: flex;
+  gap: 15px;
   margin-bottom: 20px;
 }
 
-.table-scroll {
-  overflow-x: auto;
-}
-
-.record-table {
-  width: 100%;
-  min-width: 900px;
-  border-collapse: collapse;
-  background: #111;
-  color: #fff;
-}
-
-.record-table th,
-.record-table td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #878888;
-}
-
-.record-table thead {
-  background: #00ffd5;
-  color: #000;
-}
-
-/* Table row hover effect */
-.record-table tbody tr {
-  transition: 0.3s ease;
-  cursor: pointer;
-}
-.record-table tbody tr:hover {
-  background-color: #1e3a42;
-  color: #00ffd5;
-}
-
-.delete-btn {
-  background: #e80a5f;
-  border: none;
-  padding: 6px 10px;
-  color: #fff;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* Mobile table */
 @media (max-width: 600px) {
-  .table-wrapper {
-    padding: 10px;
-  }/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-/* ================= NAVBAR ================= */
-.navbar {
-  width: 100%;
-  height: 70px;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo a {
-  text-decoration: none;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-}
-.logo span {
-  color: #ffd700;
-  margin-right: 4px;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-  justify-content: center;
-  flex: 1;
-}
-.nav-links li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-  position: relative;
-  transition: 0.3s;
-}
-.nav-links li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0%;
-  height: 2px;
-  background: #ffd700;
-  transition: 0.3s;
-}
-.nav-links li a:hover::after {
-  width: 100%;
-}
-
-.nav-btn-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.nav-btn {
-  text-decoration: none;
-  background: #ffd700;
-  color: #000;
-  padding: 8px 18px;
-  border-radius: 25px;
-  font-weight: 500;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.nav-btn:hover {
-  background: #fff;
-  color: #000;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-.menu-toggle .bar {
-  height: 3px;
-  width: 25px;
-  background-color: #fff;
-  border-radius: 3px;
-  transition: 0.3s;
-}
-.menu-toggle .rotate1 {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.menu-toggle .fade {
-  opacity: 0;
-}
-.menu-toggle .rotate2 {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* Mobile nav */
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: #1b1b1b;
+  .row {
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 25px 0;
-    display: none;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .nav-btn-wrapper {
     gap: 10px;
   }
-  .menu-toggle {
-    display: flex;
-  }
 }
 
-/* ================= FORM ================= */
-.form-wrapper {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  padding: 20px;
-}
-
-.event-form {
-  width: 100%;
-  max-width: 420px;
-  background: #111;
-  padding: 30px;
-  border-radius: 15px;
-}
-
-.event-form h2 {
-  text-align: center;
-  color: #00ffd5;
-  margin-bottom: 20px;
-}
-
-.event-form input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: none;
-  background: #222;
-  color: #fff;
-  font-size: 16px;
-}
-
-.row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
+/* ================= BUTTON ================= */
 .event-form button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border-radius: 25px;
   border: none;
-  background: #00ffd5;
+  background: linear-gradient(90deg, #00ffd5, #00e6c2);
   font-weight: 600;
+  color: #000;
+  font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
 }
+
 .event-form button:hover {
-  background: #00e6c2;
+  background: linear-gradient(90deg, #00e6c2, #00ffd5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 255, 213, 0.5);
 }
 
-/* Mobile form inputs stack */
-@media (max-width: 600px) {
-  .row {
-    flex-direction: column;
-  }
+/* ================= DATEPICKER ================= */
+.datepicker-input {
+  cursor: pointer;
+}
+
+/* ================= TOASTIFY ================= */
+.Toastify__toast--success {
+  background: #00ffd5 !important;
+  color: #000 !important;
+  font-weight: 600;
+}
+.Toastify__toast--error {
+  background: #e80a5f !important;
+  color: #fff !important;
+  font-weight: 600;
 }
 
 /* ================= TABLE ================= */
@@ -477,11 +276,11 @@
   color: #000;
 }
 
-/* Table row hover effect */
 .record-table tbody tr {
   transition: 0.3s ease;
   cursor: pointer;
 }
+
 .record-table tbody tr:hover {
   background-color: #1e3a42;
   color: #00ffd5;
@@ -502,18 +301,11 @@
     padding: 10px;
   }
 }
-}
 
-/* Date icon color */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    filter: invert(53%) sepia(33%) saturate(7489%) hue-rotate(154deg) brightness(1) contrast(1);
-    opacity: 1;
-}
-
-/* Time icon color */
+/* ================= ICON COLORS FOR DATE/TIME PICKERS ================= */
+input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    filter: invert(53%) sepia(33%) saturate(7489%) hue-rotate(154deg) brightness(1) contrast(1);
-    opacity: 1;
+  cursor: pointer;
+  filter: invert(53%) sepia(33%) saturate(7489%) hue-rotate(154deg) brightness(1) contrast(1);
+  opacity: 1;
 }

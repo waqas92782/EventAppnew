@@ -3,6 +3,8 @@ import "../App.css";
 import { DataContext } from "../Context/Data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -11,38 +13,39 @@ const Form = () => {
     adults: "",
     children: "",
     slipNumber: "",
-    date: "", // new field for date
-    time: "", // new field for time
   });
 
+  const [dateTime, setDateTime] = useState(null); // combined date + time
   const { addRecord } = useContext(DataContext);
 
-  // dynamic handleChange
+  // handle text/number inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // handle form submit
+  // handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // combine date + time into ISO datetime
-    const dateTime = `${formData.date}T${formData.time}`;
+    if (!dateTime) {
+      toast.error("Please select date and time");
+      return;
+    }
 
-    // send to context
-    addRecord({ ...formData, dateTime });
+    const isoDateTime = dateTime.toISOString();
 
-    // reset form
+    addRecord({ ...formData, dateTime: isoDateTime });
+
+    // reset
     setFormData({
       guestName: "",
       guestNumber: "",
       adults: "",
       children: "",
       slipNumber: "",
-      date: "",
-      time: "",
     });
+    setDateTime(null);
 
     toast.success("Your Record is saved!");
   };
@@ -61,7 +64,6 @@ const Form = () => {
           value={formData.guestName}
           onChange={handleChange}
           required
-          autoComplete="off"
         />
 
         <input
@@ -71,7 +73,6 @@ const Form = () => {
           value={formData.guestNumber}
           onChange={handleChange}
           required
-          autoComplete="off"
         />
 
         <div className="row">
@@ -82,7 +83,6 @@ const Form = () => {
             value={formData.adults}
             onChange={handleChange}
             required
-            autoComplete="off"
           />
           <input
             type="number"
@@ -90,7 +90,6 @@ const Form = () => {
             placeholder="Children"
             value={formData.children}
             onChange={handleChange}
-            autoComplete="off"
           />
         </div>
 
@@ -101,23 +100,19 @@ const Form = () => {
           value={formData.slipNumber}
           onChange={handleChange}
           required
-          autoComplete="off"
         />
 
-        {/* ✅ Split date + time inputs for mobile compatibility */}
+        {/* Styled React DatePicker */}
         <div className="row">
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="time"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
+          <DatePicker
+            selected={dateTime}
+            onChange={(date) => setDateTime(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            dateFormat="MMMM d, yyyy h:mm aa"
+            placeholderText="Select Date & Time"
+            className="datepicker-input"
             required
           />
         </div>
