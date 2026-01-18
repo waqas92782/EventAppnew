@@ -15,6 +15,7 @@ const Login = ({ setIsLogin }) => {
     e.preventDefault();
     if (name === USER_NAME && password === USER_PASSWORD) {
       localStorage.setItem("isLogin", "true");
+      localStorage.setItem("username", name);
       setIsLogin(true);
       navigate("/addrecord");
     } else {
