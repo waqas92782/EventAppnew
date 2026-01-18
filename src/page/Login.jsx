@@ -53,7 +53,7 @@ const Login = ({ setIsLogin }) => {
           required
         />
 
-        <button type="submit">Login</button>
+        <button type="submit" className="savebtn">Login</button>
 
         {error && (
           <p style={{ color: "red", textAlign: "center", marginTop: "10px" }}>
