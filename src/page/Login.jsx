@@ -9,13 +9,12 @@ const Login = ({ setIsLogin }) => {
   const navigate = useNavigate();
 
   const USER_NAME = "awais";
-  const USER_PASSWORD = "0000";
+  const USER_PASSWORD = "awais123@000";
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (name === USER_NAME && password === USER_PASSWORD) {
       localStorage.setItem("isLogin", "true");
-      localStorage.setItem("username", name);
       setIsLogin(true);
       navigate("/addrecord");
     } else {
