@@ -26,6 +26,7 @@
   font-weight: 600;
   color: #fff;
 }
+
 .logo span {
   color: #ffd700;
   margin-right: 4px;
@@ -38,6 +39,7 @@
   justify-content: center;
   flex: 1;
 }
+
 .nav-links li a {
   text-decoration: none;
   color: #fff;
@@ -45,6 +47,7 @@
   position: relative;
   transition: 0.3s;
 }
+
 .nav-links li a::after {
   content: "";
   position: absolute;
@@ -55,6 +58,7 @@
   background: #ffd700;
   transition: 0.3s;
 }
+
 .nav-links li a:hover::after {
   width: 100%;
 }
@@ -64,6 +68,7 @@
   align-items: center;
   gap: 15px;
 }
+
 .nav-btn {
   text-decoration: none;
   background: #ffd700;
@@ -74,6 +79,7 @@
   transition: 0.3s;
   cursor: pointer;
 }
+
 .nav-btn:hover {
   background: #fff;
   color: #000;
@@ -85,6 +91,7 @@
   cursor: pointer;
   gap: 5px;
 }
+
 .menu-toggle .bar {
   height: 3px;
   width: 25px;
@@ -92,12 +99,15 @@
   border-radius: 3px;
   transition: 0.3s;
 }
+
 .menu-toggle .rotate1 {
   transform: rotate(45deg) translate(5px, 5px);
 }
+
 .menu-toggle .fade {
   opacity: 0;
 }
+
 .menu-toggle .rotate2 {
   transform: rotate(-45deg) translate(6px, -6px);
 }
@@ -148,17 +158,77 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.event-form:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
-}
-
-.event-form h2 {
+.Mainheading {
   text-align: center;
   color: #00ffd5;
   margin-bottom: 25px;
   font-size: 26px;
   letter-spacing: 1px;
+}
+
+/* ================= DATEPICKER ================= */
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
+h2.react-datepicker__current-month,
+.react-datepicker-time__header {
+  color: #00ffd5 !important;
+}
+
+.react-datepicker__navigation-icon::before,
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow {
+  border-color: #00ffd5 !important;
+}
+
+/* Time list styling */
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item {
+  padding: 8px 10px !important;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: #00ffd5 !important;
+  color: #1e1e1e !important;
+}
+
+/* ================= DATEPICKER FIX ================= */
+/* Today date styling */
+.react-datepicker__day--today {
+  background-color: #444 !important; /* Fixed today background */
+  color: #00ffd5 !important;
+  border-radius: 50%;
+}
+
+/* Selected date styling */
+.react-datepicker__day--selected {
+  background-color: #00ffd5 !important;
+  color: #1e1e1e !important;
+  border-radius: 50%;
+}
+
+/* Hover on other days */
+.react-datepicker__day:hover {
+  background-color: #00e6c2;
+  color: #000;
+  border-radius: 50%;
+}
+
+/* Selected date in range */
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range {
+  background-color: #00ffd5 !important;
+  color: #1e1e1e !important;
+  border-radius: 50%;
 }
 
 /* ================= INPUTS ================= */
@@ -172,20 +242,13 @@
   background: #222;
   color: #fff;
   font-size: 16px;
-  transition: 0.3s;
+  transition: none; /* Hover/Focus effects disabled for datepicker */
 }
 
-.event-form input:focus,
-.datepicker-input:focus {
+.event-form input:focus {
   outline: none;
   background: #333;
   box-shadow: 0 0 8px #00ffd5;
-}
-
-.event-form input::placeholder,
-.datepicker-input::placeholder {
-  color: #aaa;
-  font-weight: 500;
 }
 
 /* ================= ROW FOR MULTIPLE INPUTS ================= */
@@ -203,8 +266,7 @@
 }
 
 /* ================= BUTTON ================= */
-.event-form button {
-  width: 100%;
+.savebtn {
   padding: 14px;
   border-radius: 25px;
   border: none;
@@ -214,17 +276,22 @@
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  width: 100%;
 }
 
-.event-form button:hover {
+.event-form .savebtn:hover {
   background: linear-gradient(90deg, #00e6c2, #00ffd5);
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 255, 213, 0.5);
 }
 
-/* ================= DATEPICKER ================= */
+/* ================= DATEPICKER CURSOR ================= */
 .datepicker-input {
   cursor: pointer;
+}
+
+.react-datepicker__header {
+  background-color: #1a1a1a !important;
 }
 
 /* ================= TOASTIFY ================= */
@@ -233,6 +300,7 @@
   color: #000 !important;
   font-weight: 600;
 }
+
 .Toastify__toast--error {
   background: #e80a5f !important;
   color: #fff !important;
@@ -300,12 +368,4 @@
   .table-wrapper {
     padding: 10px;
   }
-}
-
-/* ================= ICON COLORS FOR DATE/TIME PICKERS ================= */
-input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  filter: invert(53%) sepia(33%) saturate(7489%) hue-rotate(154deg) brightness(1) contrast(1);
-  opacity: 1;
 }

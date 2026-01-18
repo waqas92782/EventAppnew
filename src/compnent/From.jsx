@@ -55,7 +55,7 @@ const Form = () => {
       <ToastContainer position="top-right" autoClose={2000} />
 
       <form className="event-form" onSubmit={handleSubmit} autoComplete="off">
-        <h2>Event Guest Record</h2>
+        <h2 className="Mainheading">Event Guest Record</h2>
 
         <input
           type="text"
@@ -117,7 +117,7 @@ const Form = () => {
           />
         </div>
 
-        <button type="submit">Save Record</button>
+        <button type="submit" className="savebtn">Save Record</button>
       </form>
     </div>
   );
