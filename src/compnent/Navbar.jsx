@@ -20,7 +20,7 @@ const Navbar = ({ isLogin, setIsLogin }) => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link to="/"><span>VIP</span> Guest</Link>
+        <Link to="#"><span>VIP</span> Guest</Link>
       </div>
 
       <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
